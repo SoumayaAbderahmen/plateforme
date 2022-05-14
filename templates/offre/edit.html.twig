@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Offre{% endblock %}
+
+{% block body %}
+   <div class="content">
+   <div class="card-header header-elements-inline" style="background-color:RoyalBlue">
+						<h3 class="card-title" style="color:white">Modifier Offre</h3>
+						<div class="header-elements">
+							 <a class="btn btn-primary" style="width:100px" href="{{ path('offre_index') }}"><i class="icon-file-text2"></i> Liste </a>
+	                	</div>
+					</div>
+     <!-- Basic layout-->
+						<div class="card">
+							
+
+							<div class="card-body">
+							
+									 {{ include('agence_voyage/_form.html.twig', {'button_label': 'Update'}) }}
+
+                                      
+
+                                      
+							</div>
+						</div>
+						<!-- /basic layout -->
+
+   </div>
+  
+{% endblock %}

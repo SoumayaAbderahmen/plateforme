@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotel{% endblock %}
+{% block js %}
+	<script src="{{ asset('global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+	<script src="{{ asset('global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+
+	
+	<script src="{{ asset('global_assets/js/demo_pages/datatables_basic.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+<div class="content">
+   <div class="card-header header-elements-inline" style="background-color:RoyalBlue">
+						<h3 class="card-title" style="color:white">Hotel</h3>
+						<div class="header-elements">
+							<a class="btn btn-primary" href="{{ path('hotel_new') }}" style="width:100px" align="right" ><i class="icon-add"></i> Ajouter</a>
+                            	                	
+                        </div>
+
+					</div>
+   
+
+  <table class="table datatable-basic">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Photo</th>
+                 <th>Pays</th>
+                
+                
+                <th >actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+        
+            <tr>
+                <td>{{ hotel.id }}</td>
+                <td>{{ hotel.nom }}</td>
+                <td>{{ hotel.description }}</td>
+              
+                
+                                <td>
+               {% for a in hotel.photo %}
+          <img width="100px" height="100px" src="/{{a}}">
+                       {% endfor %}
+                          </td>
+                          <td>
+                            {% if hotel.pays is not null %}
+                           {{hotel.pays.nom}} 
+                           {% endif %}
+                           </td>
+               
+                <td>
+                    <a class="btn btn-primary" href="{{ path('hotel_edit', {'id': hotel.id}) }}" style="width:100px"><i class="icon-pencil"></i> Modifier</a>
+                   
+                  
+                    {{ include('hotel/_delete_form.html.twig') }}             
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

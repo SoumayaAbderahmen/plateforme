@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgenceVoyage{% endblock %}
+
+{% block body %}
+    <h1>AgenceVoyage</h1>
+   
+    <table table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agence_voyage.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agence_voyage.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ agence_voyage.description }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ agence_voyage.numtel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ agence_voyage.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ agence_voyage.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a class="btn btn-primary" style="width:100px" href="{{ path('agence_voyage_index') }}"><i class="icon-undo2"></i> back to list</a> 
+    <br>
+    <a class="btn btn-primary" style="width:100px" href="{{ path('agence_voyage_edit', {'id': agence_voyage.id}) }}"><i class="icon-pencil"></i> edit</a>
+    <br>
+
+    {{ include('agence_voyage/_delete_form.html.twig') }}
+{% endblock %}
+ 
